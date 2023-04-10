@@ -15,6 +15,19 @@ app.get('/calculations', (req, res) => {
     res.send(calculationHistory);
 })
 
+app.post('/calculations', (req, res) => {
+    let num1 = Number(req.body.num1);
+    let num2 = Number(req.body.num2);
+    let operation = req.body.operation;
+    let resNum = calculate(num1, num2, operation);
+    
+    // adding the calculation to the history
+    calculationS.addCalculation(num1, num2, operation, resNum);
+    
+    console.log(`POST /calculations - ${num1} ${operation} ${num2} = ${resNum}`);
+    res.send({ resNum: resNum });
+  });
+
 app.listen(5000, function() {
     console.log('you started the server! it is running on port 5000.');
   });

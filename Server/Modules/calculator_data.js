@@ -46,10 +46,18 @@ function calculate(num1, operation, num2) {
 
 }
 
-
+function resetCalculationHistory () {
+    calculationHistory = {
+        num1: [],
+        num2: [],
+        operation: [],
+        resNum: [],
+    }
+}
 
 exports.getCalculationHistory = getCalculationHistory;
 exports.calculate = calculate;
+exports.resetCalculationHistory = resetCalculationHistory;
 
 
 
