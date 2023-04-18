@@ -2,7 +2,7 @@ $(document).ready(onReady);
 
 function onReady () {
   $('#calculatorForm').on('click', '.opperation', updateCurrentCalculation);
-  // $('#equalsButton').on('click', sendToServer);
+  $('#equalsButton').on('click', sendToServer);
 
   getCalculationHistory()
 }
@@ -55,4 +55,34 @@ console.log('starting currentCalculation:', currentCalculation);
         ${equationString}
       </li>`);
     }
+  }
+  // POST
+  function sendToServer(event) {  
+    event.preventDefault();
+  
+    let equation = {   // <- first attempt
+      numberOne: 0,
+      opperation: "",  // <- '+', '-', '*', '/'
+      numberTwo: 0,
+    }
+  
+    equation.numberOne = $('#number-one').val();
+    equation.opperation = currentCalculation;
+    equation.numberTwo = $('#number-two').val();
+  
+    console.log('equation', equation);
+  
+    $.ajax({
+      method: 'POST',
+      url: '/calculations',
+      data: equation
+      }).then( function (response) {
+        console.log('POST /equation response:', response);
+        getCalculationHistory()
+        
+      }).catch(
+      function (error) {
+        console.log('POST /equation error:', error);
+      }
+    )
   }
