@@ -41,7 +41,12 @@ console.log('starting currentCalculation:', currentCalculation);
     $('#newestAnswer').text(`${newestAnswer}`);
   
     $('#calculationHistory').empty();
-  
+    
+    renderEquationString (equations);
+    
+  }
+
+  function renderEquationString (equations) {
     for (let equation of equations) {
   
       let equationString = `
@@ -56,6 +61,7 @@ console.log('starting currentCalculation:', currentCalculation);
       </li>`);
     }
   }
+
   // POST
   function sendToServer(event) {  
     event.preventDefault();
