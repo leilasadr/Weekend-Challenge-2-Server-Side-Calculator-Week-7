@@ -1,5 +1,5 @@
 let equations = [
-    
+
     {numberOne: 7, 
      opperation: '+', 
      numberTwo: 6, 
@@ -21,4 +21,5 @@ let equations = [
       answer: 8}
 ];
 
-module.exports = equations 
+module.exports = equations
+

@@ -6,23 +6,62 @@ const bodyParser = require('body-parser');
 app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
+// GET route
 app.get('/calculations', (req, res) => {
   console.log('GET /calculations request received!');
   res.send(equations);
 })
 
-// app.post('/calculations', (req, res) => {
-//     let num1 = Number(req.body.num1);
-//     let num2 = Number(req.body.num2);
-//     let operation = req.body.operation;
-//     let resNum = calculate(num1, num2, operation);
-    
-//     // adding the calculation to the history
-//     calculationS.addCalculation(num1, num2, operation, resNum);
-    
-//     console.log(`POST /calculations - ${num1} ${operation} ${num2} = ${resNum}`);
-//     res.send({ resNum: resNum });
-//   });
+// POST route
+app.post('/calculations', (req, res) => {
+  console.log('POST /calculations request received');
+  let newEquationAsStrings = req.body;
+
+  validateInputData(newEquationAsStrings);
+  // newEquation looks like: { numberOne: '7', opperation: '+', numberTwo: '6' }
+  let equation = calculateEquationWithAnswer(newEquationAsStrings);
+  // equation looks like: { numberOne: 9, opperation: '*', numberTwo: 4, answer: 36 }
+
+  equations.push(equation);
+  console.log('updated equations:', equations);
+  res.sendStatus(200);
+})
+
+
+
+function calculateEquationWithAnswer(newEquationAsStrings) {
+  let answer;
+
+  let numberOne = Number(newEquationAsStrings.numberOne);
+  let numberTwo = Number(newEquationAsStrings.numberTwo);
+
+  switch (newEquationAsStrings.opperation) {
+    case '+':
+      answer = numberOne + numberTwo;
+      break;
+    case '-':
+      answer = numberOne - numberTwo;
+      break;
+    case '*':
+      answer = numberOne * numberTwo;
+      break;
+    case '/':
+      answer = numberOne / numberTwo;
+      break;
+  }
+
+  console.log('answer:', answer);
+
+  let equation = {
+    numberOne: numberOne,
+    opperation: newEquationAsStrings.opperation,
+    numberTwo: numberTwo,
+    answer: answer
+  }
+
+  console.log('equation inside calculateEquationWithAnswer:', equation);
+  return equation
+}
 
 app.listen(5000, function() {
     console.log('you started the server! it is running on port 5000.');
