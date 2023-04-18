@@ -1,63 +1,23 @@
-let calculationHistory = {
-    num1: [],
-    operation: [],
-    num2: [],
-    resNum: [],
-}
+let equations = [
+    {numberOne: 7, 
+     opperation: '+', 
+     numberTwo: 6, 
+     answer: 13},
 
-let resNum = 0;
+    {numberOne: 23,
+     opperation: '-',
+     numberTwo: 11,
+     answer: 12},
 
-function getCalculationHistory () {
-    const copyOfcalculationHistory = calculationHistory;
-    return copyOfcalculationHistory;
-}
+    {numberOne: 9,
+     opperation: '*',
+     numberTwo: 4,
+     answer: 36},
 
-function calculate(num1, operation, num2) {
-    switch (operation) {
-        case '+':
-            resNum = num1 + num2 ;
-            break;
-        case '-':
-            resNum = num1 - num2 ;
-            break;
-        case 'x':
-            resNum = num1 * num2 ;
-            break;
-        case '/':
-            resNum = num1 / num2 ;
-            break;
-    }
-    
-    // Creating a new calculation object with the details
-    let newCalculation = {
-        num1: num1,
-        operation: operation,
-        num2: num2,
-        resNum: resNum
-    };
+     {numberOne: 8,
+      opperation: '/',
+      numberTwo: 1,
+      answer: 8}
+];
 
-    // Pushing the new calculation object into the corresponding arrays
-    calculationHistory.num1.push(num1);
-    calculationHistory.num2.push(num2);
-    calculationHistory.operation.push(operation);
-    calculationHistory.resNum.push(resNum);
-
-    return resNum;
-
-}
-
-function resetCalculationHistory () {
-    calculationHistory = {
-        num1: [],
-        num2: [],
-        operation: [],
-        resNum: [],
-    }
-}
-
-exports.getCalculationHistory = getCalculationHistory;
-exports.calculate = calculate;
-exports.resetCalculationHistory = resetCalculationHistory;
-
-
-
+module.exports = equations 
