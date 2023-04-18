@@ -1,4 +1,5 @@
 let equations = [
+    
     {numberOne: 7, 
      opperation: '+', 
      numberTwo: 6, 

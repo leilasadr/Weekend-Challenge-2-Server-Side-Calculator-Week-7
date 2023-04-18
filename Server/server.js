@@ -1,4 +1,4 @@
-let calculationS = require('./Modules/calculator_data.js');
+let equations = require('./Modules/calculator_data.js');
 
 const express = require('express');
 const app = express();
@@ -6,7 +6,7 @@ const bodyParser = require('body-parser');
 app.use(express.static('server/public'));
 app.use(bodyParser.urlencoded({extended: true}));
 
-let numberToCalculate = calculationS.calculate();
+let numberToCalculate = equations.calculate();
 console.log('numberToCalculate:', numberToCalculate);
 
 app.get('/calculations', (req, res) => {
