@@ -12,30 +12,27 @@
     
     <h1>Server Side Calculator</h1>
 
-    <form>
-
+    <form id="calculatorForm">
         <input
           id="num-1-input"
-          placeholder="number1"
+          placeholder="number 1"
           type="number">
-          <button id="plus-button">+</button>
-          <button id="minus-button">-</button>
-          <button id="times-button">x</button>
-          <button id="divide-button">/</button>
+          <button id="plus-button" class="opperation">+</button>
+          <button id="minus-button" class="opperation">-</button>
+          <button id="times-button" class="opperation">x</button>
+          <button id="divide-button" class="opperation">/</button>
         <input
           id="num-2-input"
-          placeholder="number2"      
+          placeholder="number 2"      
           type="number">
-          <button id="equals-button">=</button>
-          <button id="clear-button">C</button>
-
+          <button id="equalsButton">=</button>
+          <button id="clearButton">C</button>
       </form>
 
-      <h1>Calculation Result:</h1>
-      <div id="output-field"></div>
+      <h1 id="newestAnswer"></h1>
 
       <ul id="calculation-history">
-        <!-- This is where the history will go! -->
+        <!-- This is where the data will go! -->
       </ul>
     
 
