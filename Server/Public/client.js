@@ -49,8 +49,8 @@ console.log('starting currentCalculation:', currentCalculation);
       ${equation.opperation} 
       ${equation.numberTwo} = ${equation.answer}`;
 
-      console.log(equationString);
-      $('#equation-history').append(`
+      console.log('Render equationString:', equationString);
+      $('#calculationHistory').append(`
       <li class="list-item">
         ${equationString}
       </li>`);
@@ -66,9 +66,9 @@ console.log('starting currentCalculation:', currentCalculation);
       numberTwo: 0,
     }
   
-    equation.numberOne = $('#number-one').val();
+    equation.numberOne = $('#num-1-input').val();
     equation.opperation = currentCalculation;
-    equation.numberTwo = $('#number-two').val();
+    equation.numberTwo = $('#num-2-input').val();
   
     console.log('equation', equation);
   
@@ -79,7 +79,7 @@ console.log('starting currentCalculation:', currentCalculation);
       }).then( function (response) {
         console.log('POST /equation response:', response);
         getCalculationHistory()
-        
+
       }).catch(
       function (error) {
         console.log('POST /equation error:', error);

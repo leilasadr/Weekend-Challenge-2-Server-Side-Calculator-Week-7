@@ -17,7 +17,7 @@ app.post('/calculations', (req, res) => {
   console.log('POST /calculations request received');
   let newEquationAsStrings = req.body;
 
-  validateInputData(newEquationAsStrings);
+  // validateInputData(newEquationAsStrings);
   // newEquation looks like: { numberOne: '7', opperation: '+', numberTwo: '6' }
   let equation = calculateEquationWithAnswer(newEquationAsStrings);
   // equation looks like: { numberOne: 9, opperation: '*', numberTwo: 4, answer: 36 }
