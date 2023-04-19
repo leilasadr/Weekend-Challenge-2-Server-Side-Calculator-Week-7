@@ -60,6 +60,7 @@ function calculateEquationWithAnswer(newEquationAsStrings) {
   }
 
   console.log('equation inside calculateEquationWithAnswer:', equation);
+  
   return equation
 }
 
