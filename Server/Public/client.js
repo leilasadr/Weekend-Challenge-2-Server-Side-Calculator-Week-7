@@ -3,7 +3,7 @@ $(document).ready(onReady);
 function onReady () {
   $('#calculatorForm').on('click', '.opperation', updateCurrentCalculation);
   $('#equalsButton').on('click', sendToServer);
-
+  $('#calculatorForm').on('click', '.clearButton', clearInputs);
   getCalculationHistory()
 }
 let currentCalculation;
@@ -85,4 +85,11 @@ console.log('starting currentCalculation:', currentCalculation);
         console.log('POST /equation error:', error);
       }
     )
+  }
+
+  function clearInputs (event) {
+  event.preventDefault();
+  console.log('Comlicated version');
+  $('#num-1-input').val('');
+  $('#num-2-input').val('');
   }
